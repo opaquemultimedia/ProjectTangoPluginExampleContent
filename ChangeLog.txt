@@ -1,0 +1,374 @@
+----Release 0.8.1 - 12th Mar 2016 --------------------------------------------------
+
+Bugfixes:
+-	Fixed issue where points would render as black when deployed from Mac in the FastPointRenderTest.
+-	Removed level names from the project
+-	Implemented alternate fix for PC/Mac packaging differences preventing the Hub level from working on the Mac
+-	TangoMotionComponent will no longer cause apps to display a black screen on resume.
+
+Known issues:
+-	New demo FlatCameraPassthrough (and far more rarely, other AR demos) causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+-	The AR camera still seems to be lagging at least one frame behind.
+
+
+----Release 0.8.0 - 10th Mar 2016 --------------------------------------------------
+
+New in this release:
+-	Functions are documented according to UE4 standards
+-	Renamed the plugin
+
+Bugfixes:
+-	Fixed an issue where the HubLevel would not work due to subtle differences in packaging between the PC and Mac Android platforms.
+-	Fixed an issue where apps were displaying an error stating modules from a previous name of the plugin could not be loaded, even though those modules were not included in the codebase.
+-	Fixed some life cycle issues which were discovered in the last build.
+
+
+Known issues:
+-	When launched from Mac, Depth points render as black, and therefore do not show up very well at all in the FastPointCloudRenderTest. Take a look at the RGB_DepthOverlay level to see the points in action on Mac.
+-	Apps containing the Tango Motion Component will display a black screen when paused and resumed.
+-	If a project has a long path (from root) packaging all level can fail.
+-	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+-	The AR camera still seems to be lagging at least one frame behind.
+
+
+----Release 0.7.1 - 7th Mar 2016 --------------------------------------------------
+
+New in this release:
+-	Added new AR default texture
+
+Bugfixes:
+-	Fixed an issue where materials could have an error and would not compile on packaged projects
+
+Levels tested for this release:
+-	ArDemo
+-	FlatCameraPassthrough
+
+Known issues:
+-	If a project has a long path (from root) packaging all level can fail.
+-	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+-	The AR camera still seems to be lagging at least one frame behind
+
+----Release 0.7.1 - 7th Mar 2016 --------------------------------------------------
+
+New in this release:
+-	Added flat camera passthrough demo
+-	Removed vertical scaling from AR demo
+-	Added GUI for selecting ADF devices
+-	Major overhaul of the ADF demos
+-	Changed naming conventions regarding the AR material
+-	Removed License.pdf and empty folders
+-	Restructured demos
+
+Bugfixes:
+-	Lowered the floor in the TangoFireballTest demo
+-	Changed the config of the ATangoADFAreaLearn demo to high rate, low latence IMU and smooth pose to remove the stuttering
+
+Levels tested for this release:
+-	ATangoADFAreaLearn
+-	TangoADFLocalize
+-	TangoADFOverwriteMetadata
+-	TangoADFReadMetadata
+-	TangoADFRequestExport
+-	TangoADFWalkaround
+-	ArDemo
+-	ADF_RGBDepthOverlay
+-	RGBDepthOverlay
+-	CustomMotionevents
+-	TangoEventDemo
+-	HubLevel
+-	PoseDataTest
+-	TangoFireballTest
+-	TangoRelativeMotionTest
+-	TangoWalkaroundTest
+-	RelativePointCloudTest
+-	FastPointCloudRendererTest
+-	ADF_RGBDepthOverlay
+-	RGBDepthOverlay
+-	CameraIntrinsicsRetrieval
+-	FlatCameraPassthrough
+
+Known issues:
+-	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+-	The AR camera still seems to be lagging at least one frame behind
+----Release 0.7.0 - 3rd Mar 2016 --------------------------------------------------
+
+New in this release:
+-	Hub Level for choosing which demo to run
+-	Several obsolete demos have been removed
+-	Custom OnTangoPoseAvailable can now be configured using the blueprint function SetupPoseEvents
+-	Support for Tango Events using the TangoEventComponent
+-	All properties have now descritions
+-	All methods have now keywords
+
+Bugfixes:
+-	Removed redundant Tango config parameters
+-	GetLatestImageTimeStamp is now blueprintpure
+-	Removed export of TangoDevice header
+-	Removed old legacy functions and classes
+-	Fixed a memory leak
+
+Levels tested for this release:
+-	ADFDemos/TangoADFAreaLearn
+-	ADFDemos/TangoADFLocalize
+-	ADFDemos/TangoADFOverwriteMetadata
+-	ADFDemos/TangoADFReadMetadata
+-	ADFDemos/TangoADFRequestExport
+-	ADFDemos/TangoADFRequestImport
+-	ADFDemos/TangoADFWalkaround
+-	ArDemo/ArDemo
+-	CombinedDemos/ADF_RGBDepthOverlay
+-	CombinedDemos/RGBDepthOverlay
+-	EventDemo/CustomMotionevents
+-	EventDemo/TangoEventDemo
+-	HubScene/HubLevel
+-	MotionDemos/PoseDataTest
+-	MotionDemos/TangoFireballTest
+-	MotionDemos/TangoRelativeMotionTest
+-	MotionDemos/TangoWalkaroundTest
+-	PointCloudDemos/RelativePointCloudTest
+-	PointCloudDemos/FastPointCloudRendererTest
+-	CombinedDemos/ADF_RGBDepthOverlay
+-	CombinedDemos/RGBDepthOverlay
+-	TangoServiceDemos/CameraIntrinsicsRetrieval
+
+Known issues:
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+-	The AR camera still seems to be lagging at least one frame behind
+
+----Release 0.6.0 - 25th Feb 2016 --------------------------------------------------
+
+New in this release:
+-	The A.R. Camera has been improved- objects no longer 'float' up and down. Still need to account for camera offset via an offset projection matrix.
+-	The Motion component now has an A.R. mode, which takes a TangoImageComponent and synchronises the motion to the camera update.
+-	General cleanup, removal of old/obsolete/out of scope functions.
+-	Several of the demos now feature more in-depth blueprint commenting and have been cleaned up.
+
+Bugfixes:
+-	An issue where the passthrough camera could sometimes render upside-down has been fixed.
+-	The event system in the Image component should also be returning the camera type: this feature was determined to be out of scope, the Unity API (and now the Unreal API) only allows for RGB images.
+-	Several areas where Tango API 'Free' functions were not being called have been fixed.
+-	ADF Export- demo code now points to a correct folder, exported ADF with UUID now appears in the specified file location.
+-	Get ADF Metadata function now correctly obtains the Metadata Position as saved with SetMetadata.
+-	Obsolete functions which use ETangoPositionContext have been removed.
+-	Area Learning import/export can now be used whether or not Learning Mode has been enabled.
+-	The obsolete YUV class has been removed.
+-	Several obsolete functions and parameters on the Image component have been removed.
+
+Levels tested for this release:
+
+-	MotionDemos/WalkaroundTest
+-	MotionDemos/TangoMotionDelegateTest
+-	MotionDemos/TangoFireballTest
+-	MotionDemos/RelativeMotionTest
+-	MotionDemos/PoseDataTest
+-	PointCloudDemos/RelativePointCloudTest
+-	PointCloudDemos/FastPointCloudRendererTest
+-	ADFDemos/TangoADFRequestExport
+-	ADFDemos/TangoADFOverwriteMetadata
+-	ADFDemos/TangoADFReadMetadata
+-	CombinedDemos/ADF_RGBDepthOverlay
+-	CombinedDemos/RGBDepthOverlay
+-	TangoServiceDemos/CameraIntrinsicsRetrieval
+
+Known issues:
+-	Copyright has not been changed to Apache 2- this will be adjusted in the next release.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The example content levels tested above have the Disconnect function called upon ending play when strictly speaking it is not neccessary.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-       The Motion component is still locked to events of only Service Start to Device co-ordinates.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+----Release 0.5.0 - 22nd Feb 2016 --------------------------------------------------
+
+New in this release:
+-	Area Learning and ADF Saving as well as Loading existing areas are demonstrated in this release.
+-	The Export ADF intent and functionality has been implemented.
+-	The Import ADF intent and functionality has been implemented.
+-	Depth API has been altered, users can now poll individual points and are no longer able to potentially deep copy the entire array into Blueprint.
+-	Users can edit ADF metadata of a given UUID in Blueprint.
+-	Users can poll the ADF metadata of a given UUID (Please note there is currently a known issue with this function!)
+
+Bugfixes:
+-	The Launch button is back and in working order.
+-	Apps built with the system will now check for intent permissions rather than attempting to request them for a second time.
+-	An issue where the Import Intent system would recieve the UUID twice rather than the filename has been fixed.
+-	More testing is warranted here, but it appears thermal management, particularly involving Depth, is much improved.
+
+New test levels to check out / Levels tested for this release:
+-	CombinedDemos/ADF_RGBDepthOverlay
+-	ADFTests/TangoADFAreaLearn
+-	ADFTests/TangoADFOverwriteMetadata
+-	ADFTests/TangoADFReadMetadata (See known issues)
+-	ADFTests/TangoADFRequestExport
+-	ADFTests/TangoADFRequestImport
+
+Known issues:
+-	Several areas have been identified where Tango 'free' functions are not being called, resulting in small memory leaks. This fix is priority #1 for 0.6.0.
+-	In our tests we haven't been able to find the exported ADF, even though the intent reports a successful export. We've seen reports this may be due to SD card issues- would be great to discuss this one with the Tango team.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks for the next release.
+-	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	While improvements to Thermal management have been made, converting these rendered points into screen space is now causing additional issues (need to re-test this).
+-	The example content levels tested above have the Disconnect function called upon ending play when strictly speaking it is not neccessary.
+-	The AR Demo's virtual camera has not yet been adjusted to utilize the camera intrinsics information. (Marked improvements on the way in the next release).
+-	The event system in the Image component should also be returning the camera type.
+-       The Motion component is still locked to events of only Service Start to Device co-ordinates.
+-       There is an off by one rounding error present in the TangoCameraIntrinsics function.
+
+
+----Release 0.4.0 - 18th Feb 2016 --------------------------------------------------
+
+New in this release:
+-	ADF functionality has been re-introduced, beginning with localization of the Motion component. 
+	More functionality has been added but the tests are yet to be finished.
+	PLEASE NOTE: You will need to check the Edit/Project Settings/Project Tango/ADF permissions checkbox to allow for permissions.
+	This is currently causing an issue where Packaged files will work perfectly however Launched applications will crash when opened a second time!
+-	ADF functions now make use of pair structs which are a little more managable than seperate UUIDs and filenames. Further UI improvements incoming.
+-	The 'IsLocalized' function has been moved into the Tango Motion Component.
+-	The point cloud renderer has been updated, and can also now accept a material (and therefore shader operations) rather than just a colour.
+
+Bugfixes:
+
+-       ‘IsTangoConnected’ is now correctly reporting when a connection to the Tango service has been established.
+-	An issue where where pose components were not correctly initialized and could output junk data have been corrected.
+-	The 'IsLocalized' function now behaves correctly and does not return 'false' depending on whether a motion component is present or not.
+-	Corrected an issue where Tango Intents would be fired/requested twice (all Android Unreal apps fire the 'OnResume' event twice in quick succession during startup).
+
+New test levels to check out:
+-	CombinedTests/RGBDepthOverlay
+-	ADFDemos/TangoADFWalkaround (will load the second ADF file in TangoCore by default, change the number in the 'GET' node to alter this)
+
+Demos tested for this release:
+-	CombinedDemos/RGBDepthOverlay
+-	MotionDemos/TangoWalkaroundMap
+-	Point Cloud Demos/FastPointCloudRenderTest
+-	ArDemo/ArDemo
+-	ADFDemos/TangoADFWalkaround (Note: Though this has been tested thoroughly through the day, I could not get either our app or the Tango Explorer to localize at night just before the drop- I suspect lighting issues).
+
+Known issues:
+-	We experienced a crash of the Yellowstone tablet when running the RGBDepthOverlay test for the first time. However, we were not able to reproduce the crash- please let us know if you see similar behaviour.
+-	The depth-to-world conversion in the CombinedDemo is off. The demo has been included as a stress test.
+-	PLEASE NOTE: The intent call to the Tango service is currently causing an issue where applications cannot be launched a second time after being deployed with the 'Launch' button. Our intended workaround will arrive in the next drop- this functionality is being moved into a node in UE4.
+-	While improvements to Thermal management have been made, converting these rendered points into screen space is now causing additional issues.
+-	The example content levels tested above have the Disconnect function called upon ending play when strictly speaking it is not neccessary.
+-	The AR Demo's virtual camera has not yet been adjusted to utilize the camera intrinsics information.
+-	Although we have implemented better access patterns, it's still possible to pull the depth array into Blueprint. Currently waiting to liase with the Google platform team to find the best path forward here (Issue #4).
+-	The event system in the Image component should also be returning the camera type.
+-       As with previous releases, checking the ‘ADF load/save’ permissions checkbox will prevent the Tango service from starting correctly.
+-       A bug in the feature which automatically enabled depth when users attempted to activate depth functionality without the depth configuration options has appeared with the switch to the event-based system. As a result, disabling the depth stream does not work correctly at present. I’ll be taking a look at this myself tomorrow.
+-       While API complete and working, the PointCloud component is still far from optimized! We’re investigating bulk transformations and being a bit cleverer with both C-style and Unreal-specific pointers as potential speedups.
+-       The Motion component is still locked to events of only Service Start to Device co-ordinates.
+-       There is an off by one rounding error present in the TangoCameraIntrinsics function.
+
+
+----Release 0.3.1 - 16th Feb 2016 --------------------------------------------------
+Bugfixes:
+-	Removed deprecated code which was preventing a full package working out of the box.
+	 The Launch Button works for each of the demos listed as having been tested for release in 0.3.0.
+
+----Release 0.3.0 - 15th Feb 2016 --------------------------------------------------
+
+
+New in this release:
+-	Augmented Reality demo! You'll see a cube which oscilates in vertical size over time in the scene.
+-	Manual connection/disconnection- developers can now switch in and out of Tango mode at will, changing the configuration each time.
+-	Manual configuration control; Blueprint developers can now create a FTangoConfig object with which to better control their Tango service.
+-	Seperated the Point Cloud Renderer included into a new component, debug functionality removed from the Tango Point Cloud Component.
+-	Demonstrated use of passing Data by reference via blueprint to C++ objects using Nick W.’s “Dark Payload” suggestion in the FastPointCloudRenderTest.
+-	Added some some small optimizations to the point cloud component- can now render ~11k points between 40 to 60FPS.
+
+Bugfixes:
+-	Launch button works! This should help save some time, you can now launch straight to the device without having to change your default maps and modes.
+-	Github issue #12 which affected walkaround pawns has been resolved.
+-	Issue #19 Tango Image Component issue was resolved prior to deployment.
+-	Issue #7 has been addressed, and dead code removed- conversions will occur in TangoDevice and helpers when it prevents duplicate calls to conversion functions (in the case of multiple components being used at once, see discussion in issue #7).
+-	Issue #6 has been addressed, we're now seeing 40-60FPS and clearer definition using the new generic point cloud renderer external to the Point Cloud component.
+
+New test levels to check out:
+- 	PointCloudDemos/FastPointCloudRenderTest
+- 	ImageDemo/TangoTexture
+
+Demos tested for this release:
+-	MotionDemos/TangoMotionDelegatesTest
+-	MotionDemos/TangoWalkaroundMap
+-	MotionDemos/TangoMotionDelegateTest
+-	MotionDemos/RelativeMotionTest
+-	Point Cloud Demos/FastPointCloudRenderTest
+-	Point Cloud Demos/RelativePointCloudTest
+-	ArDemo/ArDemo
+
+Known issues:
+-	The example content levels tested above have the Disconnect function called upon ending play when strictly speaking it is not neccessary.
+-	The AR Demo's virtual camera has not yet been adjusted to utilize the camera intrinsics information.
+-	Although we have implemented better access patterns, it's still possible to pull the depth array into Blueprint. Currently waiting to liase with the Google platform team to find the best path forward here (Issue #4).
+-	The event system in the Image component should also be returning the camera type.
+-       As with previous releases, checking the ‘ADF load/save’ permissions checkbox will prevent the Tango service from starting correctly.
+-       ‘IsTangoConnected’ incorrectly reports no connection when a connection is in fact established.
+-       A bug in the feature which automatically enabled depth when users attempted to activate depth functionality without the depth configuration options has appeared with the switch to the event-based system. As a result, disabling the depth stream does not work correctly at present. I’ll be taking a look at this myself tomorrow.
+-       While API complete and working, the PointCloud component is still far from optimized! We’re investigating bulk transformations and being a bit cleverer with both C-style and Unreal-specific pointers as potential speedups.
+-       The Motion component is still locked to events of only Service Start to Device co-ordinates.
+-       There is an off by one rounding error present in the TangoCameraIntrinsics function.
+
+----Release 0.2.0 11th Feb 2016 --------------------------------------------------
+
+
+New in this release:
+-	Start of the new point cloud rendering feature, based on the LineBatcher component.
+-	Increased Depth point rendering speed- now rendering the default scene at ~10K points at 40fps.
+-	Can now pass Data by reference via blueprint to C++ objects using Nick W.’s “Dark Payload” suggestion.
+-	Refactor & cleanup of Depth & Motion components, splitting some functions into subclasses for readability (will not change the overall function list).
+-	Updated the Motion permissions system, no longer calls the redundant Motion intent
+
+Bugfixes:
+-	All applications built with the plugin load 10s faster.
+-	Memory leak issues resolved.
+-	Application & service stability greatly increased.
+-	Lifecycle issues resolved- should now also be able to deploy via 'Launch' command (although we still recommend full package)
+-	Fixed an issue where mutexes were not being correctly initialized.
+
+New test levels to check out:
+- 	PointCloudDemos/DebugPointRenderTest (Now more readable, first-person view of the Depth array)
+- 	PointCloudDemos/RelativePointCloudTest (Fixes have resulted in this version now correctly allowing users to scan their rooms)
+
+Known issues:
+-	When used with Tango Walkaround Pawns (and apparently only in this case), the TangoMotionComponent is now causing div/zero errors and preventing editor startup. We are investigating.
+-	Although we have implemented better access patterns, it's still possible to pull the depth array into Blueprint.
+-	The event system in the Image component should also be returning the camera type.
+-       As with previous releases, checking the ‘ADF load/save’ permissions checkbox will prevent the Tango service from starting correctly.
+-       ‘IsTangoConnected’ incorrectly reports no connection when a connection is in fact established.
+-       A bug in the feature which automatically enabled depth when users attempted to activate depth functionality without the depth configuration options has appeared with the switch to the event-based system. As a result, disabling the depth stream does not work correctly at present. I’ll be taking a look at this myself tomorrow.
+-       While API complete and working, the PointCloud component is still far from optimized! We’re investigating bulk transformations, double-buffering and being a bit cleverer with both C-style and Unreal-specific pointers as potential speedups.
+-       The Motion component is still locked to events of only Service Start to Device co-ordinates.
+-       There is an off by one rounding error present in the TangoCameraIntrinsics function.
