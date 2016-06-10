@@ -1,6 +1,302 @@
-----Release 0.8.1 - 12th Mar 2016 --------------------------------------------------
+----Release 0.9.5/RC7 - 10th June 2016 ----------------------------------------------
+
+New in this release:
+-	Added 2 tutorials; one explaining the Walkaround Pawn, and one describing the high-level concepts and use of the Tango plugin.
+-	Updated to Okul version of the Tango Core.
+
+Known issues:
+-	The Depth camera’s runtime configuration cannot be set to zero.
+-	If a project has a long path (from root) packaging all levels can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+
+----Release 1.0 RC6 - 23rd May 2016 -----------------------------------------------
+
+New in this release:
+-	Now UE4.12 compatible.
+-	Changed the Fireball demo to match the current Fireball example in the UE4 example content.
+-	HUD buttons should now appear more responsive on the main menu.
 
 Bugfixes:
+-	Fixed the Fireball rendering incorrectly with artefacts.
+
+Levels tested for this release: (all)
+
+Known issues:
+-	All Camera demos, including colouring of mesh generation and depth points, are currently unpacking incorrectly. This is a known issue with the Mira release and will be fixed in the next release of the TangoCore.
+-	If a project has a long path (from root) packaging all levels can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+
+----Release 1.0 RC5 - 23rd May 2016 -----------------------------------------------
+
+New in this release:
+-	Changed some function names to be in better keeping with the Unreal code standards
+-	Removed dead code and old comments.
+-	Added further comments to some of the functions which were more dense.
+
+Bugfixes:
+-	The data held by the Tango config object is now freed correctly.
+
+Levels tested for this release: (all)
+
+Known issues:
+-	All Camera demos, including colouring of mesh generation and depth points, are currently unpacking incorrectly. This is a known issue with the Mira release and will be fixed in the next release of the TangoCore.
+-	There has been a texture artefact observed in the Fireball demo- small triangular artefacts appear on the screen when fireballs have detonated on the ground.
+-	If a project has a long path (from root) packaging all levels can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+
+----Release 1.0 RC4 - 11th May 2016 -----------------------------------------------
+
+New in this release:
+-	Updated the manifest to better support the Mira release
+-	General code cleanup
+
+Bugfixes:
+-	Removed test levels/functions which weren’t required
+-	Removed empty folders in the example content
+
+Levels tested for this release: (all)
+
+Known issues:
+-	All Camera demos, including colouring of mesh generation and depth points, are currently unpacking incorrectly. It appears there has been a subtle change in the Mira release to the y’cb’cr packing. 
+-	There has been a texture artefact observed in the Fireball demo- small triangular artefacts appear on the screen when fireballs have detonated on the ground.
+-	A SIGSEGV can fire at random (roughly 1/10 chance) upon loading certain passthrough camera demos (most notably the ARCameraPassthrough demo)
+-	On the Coconut device, the A.R. camera is showing what appear to be colouring/banding issues.
+-	If a project has a long path (from root) packaging all level can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+
+----Release 1.0 RC3 - 4th May 2016 -----------------------------------------------
+
+New in this release:
+-	Added several new test levels for plane finding and AR/Depth interaction.
+-	First-cut of Coconut support.
+
+Bugfixes:
+-	Corrected an issue where a configuration service call was made before the service was bound.
+-	Corrected and updated the Point and Planefinding functions.
+
+Levels tested for this release (internal preview, RC4 will receive full test):
+-	WalkaroundDemo
+-	ARCamera
+-	ARCameraPassthrough
+-	FireballDemo
+-	RGBDepthDemo
+-	FastDepthRender
+
+Known issues:
+-	A SIGSEGV can fire at random (roughly 1/10 chance) upon loading certain passthrough camera demos (most notably the ARCameraPassthrough demo)
+-	On the Coconut device, the A.R. camera is showing what appear to be colouring/banding issues.
+-	If a project has a long path (from root) packaging all level can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+----Release 1.0 RC2.1 - 26th Apr 2016 -----------------------------------------------
+Hot-fix: Tango service binding function was erroneously not called in the C layer as well as in the java layer. This has been corrected.
+
+----Release 1.0 RC2 - 26th Apr 2016 -------------------------------------------------
+New in this release:
+- Forwards compatibility testing
+- Now binds and unbinds from Android services
+- Now loads libraries from new locations
+- Note that Connect is now a lengthier operation, current advice (will confirm) is that users will need to display a loading graphic of some sort while the service connects. Will attempt to offload this to another thread.
+
+Bugfixes:
+- The project’s settings were erroneously set to include graphics operations which weren’t strictly required, eating into the resources which the Tango core had to extract poses/features. This may have contributed to jitteriness of A.R. objects.
+
+Levels tested for this release:
+- WalkaroundDemo
+- ARCameraDemo
+
+Known issues:
+-	If a project has a long path (from root) packaging all level can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+
+----Release 1.0 RC1 - 14th Apr 2016 -------------------------------------------------
+New in this release:
+- Now uses the AppContext during initialisation, for better forwards compatibility.
+- Experimental sneak peek added: Mesh Construction
+- Plugin now contains internal content referenced at runtime.
+- LateUpdate/AR code has been made more performant.
+
+Bugfixes:
+- The SIGSEGV which could occur at random during initialisation of the passthrough camera has been fixed.
+- The ‘jitter’ issue where parts of the screen would appear black during AR Demos has been fixed.
+- An issue where the depth events would sometimes not work correctly has been fixed.
+- An issue where some content needed to be imported from the TangoExampleContent level has been fixed.
+- Some excessive logs have been removed.
+
+All Levels tested for this release.
+
+Known issues:
+-	If a project has a long path (from root) packaging all level can fail.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+
+----Release 0.9.3 - 7th Apr 2016 --------------------------------------------------
+New in this release:
+- Now UE4.11 compatible!
+- Internal documentation pass: All metadata up to date.
+- Consistency pass: moved variable names to the UE4 standard.
+- Files which the plugin depends upon are now maintained within a folder internal to the plugin.
+- New function added: GetComponentTransformAtTime, polls the GetPoseAtTime with the current co-ordinate frame pair of the target MotionComponent.
+- PrepareCameraForARMode function has been removed, and the ARCamera is now the canonical method for A.R. functionality- see the example level for implementation details.
+- XYZij struct has been removed and all events now only expose a timestamp variable.
+- TangoServiceSingleton has been renamed to UTangoFunctionLibrary
+
+Bugfixes:
+-	Fixed an issue where the depth points were not correctly aligned with the RGB image in one of the combined demos.
+-	Removed empty files from the Example Content level.
+-	Fixed an issue where depth could not be disabled at startup.
+-	Fixed inconsistent input parameters for GetMetadata and SaveMetadata functions.
+-	Fixed an issue where ADF functions were not correctly setting their IsSuccessful boolean returns.
+
+
+All Levels tested for this release.
+
+Known issues:
+	
+-	The Late Update Jitter fix is still upcoming. Our latest work on this issue currently prevents LateUpdate from working correctly.
+-	If a project has a long path (from root) packaging all level can fail.
+-	FlatCameraPassthrough and TangoARScreenDemo causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+----Release 0.9.2 - 1st Apr 2016 --------------------------------------------------
+
+
+New in this release:
+-	Poses can be queried from most CoordinateFramePairs (E.g. from StartOfService to ColorCamera) with correct space conversions
+-	All coordinate frames are now aligned to have the +Z axis as up and +X pointing outward of the device and +Y pointing right, which makes easy conversions between them possible
+
+Bugfixes:
+-	Fixed a bug where Offset Motion Events where not accumulated
+-	Fixed virtual objects appearing to move (see ARCameraDemo)
+-	Fixed coordinate space conversions from tango spaces to UE spaces
+
+Levels tested for this release:
+-	ARCameraDemo
+-	TangoARScreenDemo
+
+Known issues:
+	
+-	Tango Custom Motion Event Demo does not work currently
+-	Late update on the render thread causes some jitter in the TangoARCamera and TangoARScreen
+-	If a project has a long path (from root) packaging all level can fail.
+-	FlatCameraPassthrough and TangoARScreenDemo causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+----Release 0.9.1 - 28th Mar 2016 --------------------------------------------------
+
+
+New in this release:
+-	Tango camera passthrough materials can now account for camera distortion
+-	Displaying camera images and working with AR is now way easier
+-	Intruduced TangoARCamera component which doeas complete AR setup automatically
+-	Introduced TangoARScreen component a mesh component that automatically sets up a Tango Image passthrough material as its first Material
+-	Introduced ARCameraDemo level
+-	Introduced TangoARScreenDemo level
+
+Bugfixes:
+-	Offset projection matrices can now be injected in the Unreal Engine
+
+Levels tested for this release:
+-	ArDemo
+-	1fpsArDemo
+-	ADF_RGPDepthOverlay
+-	FlatCameraPassthrough
+-	ARCameraDemo
+-	TangoARScreenDemo
+
+Known issues:
+-	Late update on the render thread causes some jitter in the TangoARCamera and TangoARScreen
+-	When rotating the Tango device in an AR demo virtual objects appear to move. This is because the AR demos do not currently account for the position of the passthrough camera and possibly wrong UV shifting in the passtrough image.
+-	If a project has a long path (from root) packaging all level can fail.
+-	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+----Release 0.9.0 - 24th Mar 2016 --------------------------------------------------
+
+
+New in this release:
+-	Overhauled the FastPointCloudRendererTest map
+-	Coloring of points from the Tango Points component is now possible
+-	Optimized some Tango structs
+
+Bugfixes:
+-	The AR camera is now in sync with the video passthrough
+-	Demo objects using the motion component can be moved around
+-	Fixed faulty events in some blueprints
+-	Removed clipping error in point cloud rendering
+-	Fixed an issue where only one third of depth points where being drawn
+-	Fixed depth points not being aligned with passtrough camera 
+
+Levels tested for this release:
+-	TangoADFAreaLearn
+-	TangoADFLocalize
+-	TangoADFOverwriteMetaData
+-	TangoADFReadMetaData
+-	TangoADFRequestExport
+-	TangoADFWalkaround
+-	ArDemo
+-	1fpsArDemo
+-	ADF_RGPDepthOverlay
+-	CustomMotionevents
+-	TangoEventDemo
+-	PoseDataTest
+-	RelativeMotionTest
+-	TangoFireballMap
+-	TangoWalkaroundMap
+-	FastPointCloudRendererTest
+-	CameraIntrinsicsRetrieval
+-	FlatCameraPassthrough
+
+Known issues:
+-	If a project has a long path (from root) packaging all level can fail.
+-	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
+-	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
+-	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
+-	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
+-	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
+-	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
+
+----Release 0.8.1 - 12th Mar 2016 --------------------------------------------------
+
+
+
+Bugfixes:
+
 -	Fixed issue where points would render as black when deployed from Mac in the FastPointRenderTest.
 -	Removed level names from the project
 -	Implemented alternate fix for PC/Mac packaging differences preventing the Hub level from working on the Mac
@@ -17,20 +313,34 @@ Known issues:
 -	The AR camera still seems to be lagging at least one frame behind.
 
 
+
+
 ----Release 0.8.0 - 10th Mar 2016 --------------------------------------------------
 
+
+
 New in this release:
+
 -	Functions are documented according to UE4 standards
+
 -	Renamed the plugin
 
+
+
 Bugfixes:
+
 -	Fixed an issue where the HubLevel would not work due to subtle differences in packaging between the PC and Mac Android platforms.
+
 -	Fixed an issue where apps were displaying an error stating modules from a previous name of the plugin could not be loaded, even though those modules were not included in the codebase.
+
 -	Fixed some life cycle issues which were discovered in the last build.
 
 
+
 Known issues:
+
 -	When launched from Mac, Depth points render as black, and therefore do not show up very well at all in the FastPointCloudRenderTest. Take a look at the RGB_DepthOverlay level to see the points in action on Mac.
+
 -	Apps containing the Tango Motion Component will display a black screen when paused and resumed.
 -	If a project has a long path (from root) packaging all level can fail.
 -	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
@@ -43,28 +353,7 @@ Known issues:
 -	The AR camera still seems to be lagging at least one frame behind.
 
 
-----Release 0.7.1 - 7th Mar 2016 --------------------------------------------------
 
-New in this release:
--	Added new AR default texture
-
-Bugfixes:
--	Fixed an issue where materials could have an error and would not compile on packaged projects
-
-Levels tested for this release:
--	ArDemo
--	FlatCameraPassthrough
-
-Known issues:
--	If a project has a long path (from root) packaging all level can fail.
--	New demo FlatCameraPassthrough causes sometimes a SIGSEV due to a race condition in the plugin.
--	Inconsistent data is being returned from the Rotation array in the GetMetadata function.
--	Users don't currently have a manner to check if their ADF exports/import requests succeeded or failed. We're looking at proposing new callbacks which would inform users of the result.
--	The depth-to-world conversion in the CombinedDemo and ADF_RGBDepthOverlay is off. The demo has been included as a stress test.
--	The ADF Save file operation takes a second or two, we're looking at ways to offload it from the main thread.
--	The AR Demo's virtual camera has not yet been adjusted to use an offset projection matrix- this is relatively easy to implement in Unity but may require some engine changes to implement in UE4 in a clean manner. We are investigating further.
--	It's possible to interrupt the Tango Service Disconnect function in a particular case: User has used the Launch button, minimised the app, and then very quickly shut it down.
--	The AR camera still seems to be lagging at least one frame behind
 
 ----Release 0.7.1 - 7th Mar 2016 --------------------------------------------------
 

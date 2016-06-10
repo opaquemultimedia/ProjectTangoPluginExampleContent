@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.10",
+	"EngineAssociation": "4.12",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -30,10 +30,6 @@
 		{
 			"Name": "SteamVR",
 			"Enabled": false
-		},
-		{
-			"Name": "ProjectTangoPlugin",
-			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
