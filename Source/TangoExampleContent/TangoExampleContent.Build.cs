@@ -8,11 +8,11 @@ public class TangoExampleContent : ModuleRules
 	{
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+		PrivateDependencyModuleNames.AddRange(new string[] { "TangoPlugin" });
 
         //@TODO: Include the following and thoroughly test the 
-        //PrivateDependencyModuleNames.AddRange(new string[] { "ProjectTangoPlugin" });
-        //PrivateIncludePathModuleNames.AddRange(new string[] { "ProjectTangoPlugin" });
+        //PrivateDependencyModuleNames.AddRange(new string[] { "TangoPlugin" });
+        PrivateIncludePathModuleNames.AddRange(new string[] { "TangoPlugin" });
 
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
